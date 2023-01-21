@@ -1,53 +1,53 @@
 <?php include 'inc/header.php'; ?>
 
 <?php 
-$name = $email = $body = '';
-$nameErr = $emailErr = $bodyErr = '';
+    $name = $email = $body = '';
+    $nameErr = $emailErr = $bodyErr = '';
 
-// Form submit
-if(isset($_POST['submit'])){
-    // Validate name
-    if(empty($_POST['name'])){
-        $nameErr = 'Name is required';
-    }
-    else{
-        $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    }
+    // Form submit
+    if(isset($_POST['submit'])){
 
-    // Validate email
-    if(empty($_POST['email'])){
-        $emailErr = 'Email is required';
-    }
-    else{
-        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    }
-
-    // Validate body
-    if(empty($_POST['body'])){
-        $bodyErr = 'Feedback is required';
-    }
-    else{
-        $body = filter_input(INPUT_POST, 'body', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    }
-
-    if(empty($nameErr) && empty($emailErr) && empty($bodyErr)){
-        // Add to DB
-        $sql = "INSERT INTO feedback (name, email, body) VALUES ('$name', '$email', '$body')";
-    
-        if(mysqli_query($conn, $sql)){
-            // Success
-            header('Location: feedback.php');
+        // Validate name
+        if(empty($_POST['name'])){
+            $nameErr = 'Name is required';
         }
         else{
-            echo 'Error ' . mysqli_error($conn);
+            $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        }
+
+        // Validate email
+        if(empty($_POST['email'])){
+            $emailErr = 'Email is required';
+        }
+        else{
+            $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+        }
+
+        // Validate body
+        if(empty($_POST['body'])){
+            $bodyErr = 'Feedback is required';
+        }
+        else{
+            $body = filter_input(INPUT_POST, 'body', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        }
+
+        if(empty($nameErr) && empty($emailErr) && empty($bodyErr)){
+            // Add to DB
+            $sql = "INSERT INTO feedback (name, email, body) VALUES ('$name', '$email', '$body')";
+        
+            if(mysqli_query($conn, $sql)){
+                // Success
+                header('Location: feedback.php');
+            }
+            else{
+                // Error
+                echo 'Error ' . mysqli_error($conn);
+            }
         }
     }
-}
-
-
 ?>
 
-<img src="img.jpg" class="w-20 mb-3 rounded-circle" alt="">
+<img src="img.jpg" class="w-20 mb-3 rounded-circle" alt="Logo">
 <h2>Feedback</h2>
 <p class="lead text-center">Leave feedback for Alexander [br4ndy-code]</p>
 <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="mt-4 col-sm-12 col-md-6">
@@ -72,7 +72,7 @@ if(isset($_POST['submit'])){
             <?php echo $bodyErr; ?>
         </div>
     </div>
-        <div class="mb-3">
+    <div class="mb-3">
         <input type="submit" name="submit" value="Send" class="btn btn-dark w-100">
     </div>
 </form>
