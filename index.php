@@ -47,9 +47,9 @@
     }
 ?>
 
-<img src="img.jpg" class="w-20 mb-3 rounded-circle" alt="Logo">
+<img src="image.jpg" class="mb-3 rounded-circle" alt="Logo" style="width: 200px;">
 <h2>Feedback</h2>
-<p class="lead text-center">Leave feedback for Alexander [br4ndy-code]</p>
+<p class="lead text-center">For Alexander</p>
 <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="mt-4 col-sm-12 col-md-6">
     <div class="mb-3">
         <label for="name" class="form-label">Name</label>
