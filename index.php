@@ -73,7 +73,7 @@
         </div>
     </div>
     <div class="mb-3">
-        <input type="submit" name="submit" value="Send" class="btn btn-dark w-100">
+        <input type="submit" name="submit" value="Send" class="btn btn-primary w-100">
     </div>
 </form>
 
