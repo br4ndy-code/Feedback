@@ -14,7 +14,7 @@
 
 <?php foreach($feedback as $item): ?>
 <div class="card my-3 col-sm-12 col-md-6">
-  <div class="card-body text-center">
+  <div class="card-body text-center text-dark">
     <?php echo $item['body']; ?>
     <div class="text-secondary mt-2">
       By <?php echo $item['name']; ?> on <?php echo $item['date']; ?>
